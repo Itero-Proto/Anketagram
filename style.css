@@ -1,6 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f7fa;
     margin: 0;
     padding: 20px;
 }
@@ -9,50 +9,50 @@ body {
     max-width: 500px;
     margin: 0 auto;
     background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 h1 {
     color: #0088cc;
     text-align: center;
+    margin-bottom: 30px;
 }
 
 .section {
-    margin-bottom: 20px;
-    padding: 15px;
-    border-radius: 8px;
-    background: #f9f9f9;
-}
-
-h2 {
-    font-size: 1.2em;
-    color: #333;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 input {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: 0.2s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #0088cc;
+    box-shadow: 0 0 0 3px rgba(0, 136, 204, 0.2);
 }
 
 button {
+    margin-top: 25px;
     background: #0088cc;
     color: white;
-    padding: 12px;
+    padding: 14px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    width: 100%;
-    font-size: 1em;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.2s ease;
 }
 
 button:hover {
-    background: #006699;
+    background: #0071a8;
 }
