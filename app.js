@@ -1,6 +1,34 @@
 const tg = window.Telegram.WebApp;
 tg.expand();
 
+// === ПРОГРЕСС-БАР ===
+const inputs = document.querySelectorAll("input");
+const progressText = document.getElementById("progress-text");
+const progressFill = document.getElementById("progress-fill");
+
+function updateProgress() {
+  let filled = 0;
+
+  inputs.forEach((input) => {
+    if (input.value.trim() !== "") {
+      filled++;
+    }
+  });
+
+  progressText.textContent = `Заполнено ${filled} из ${inputs.length}`;
+  const percentage = (filled / inputs.length) * 100;
+  progressFill.style.width = `${percentage}%`;
+}
+
+// Добавим обработчик на каждый input
+inputs.forEach((input) => {
+  input.addEventListener("input", updateProgress);
+});
+
+// Обновим прогресс при загрузке (на случай автозаполнения)
+window.addEventListener("DOMContentLoaded", updateProgress);
+
+// === ОТПРАВКА ФОРМЫ ===
 document.getElementById("anketaForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -29,29 +57,4 @@ document.getElementById("anketaForm").addEventListener("submit", (e) => {
 
   tg.sendData(JSON.stringify(formData));
   tg.close();
-  const inputs = document.querySelectorAll("input");
-  const progressText = document.getElementById("progress-text");
-  const progressFill = document.getElementById("progress-fill");
-
-  function updateProgress() {
-    let filled = 0;
-
-    inputs.forEach((input) => {
-      if (input.value.trim() !== "") {
-        filled++;
-      }
-    });
-
-    progressText.textContent = `Заполнено ${filled} из ${inputs.length}`;
-    const percentage = (filled / inputs.length) * 100;
-    progressFill.style.width = `${percentage}%`;
-  }
-
-  // Обновляем при каждом вводе
-  inputs.forEach((input) => {
-    input.addEventListener("input", updateProgress);
-  });
-
-  // Обновим прогресс при загрузке (если форма сохраняет значения)
-  window.addEventListener("DOMContentLoaded", updateProgress);
 });
