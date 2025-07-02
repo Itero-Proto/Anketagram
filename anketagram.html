@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ANKETAGRAM</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      input,
+      button {
+        display: block;
+        width: 100%;
+        margin-bottom: 12px;
+        padding: 10px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>📝 ANKETAGRAM</h2>
+    <input type="text" id="name" placeholder="Как тебя зовут?" />
+    <input type="number" id="age" placeholder="Сколько тебе лет?" />
+    <input type="text" id="city" placeholder="Откуда ты?" />
+    <input type="text" id="hobby" placeholder="Чем увлекаешься?" />
+    <input type="text" id="movie" placeholder="Любимый фильм?" />
+    <button onclick="sendData()">📤 Отправить</button>
+
+    <script>
+      function sendData() {
+        const data = {
+          name: document.getElementById("name").value,
+          age: document.getElementById("age").value,
+          city: document.getElementById("city").value,
+          hobby: document.getElementById("hobby").value,
+          movie: document.getElementById("movie").value,
+        };
+        Telegram.WebApp.sendData(JSON.stringify(data));
+        Telegram.WebApp.close();
+      }
+    </script>
+  </body>
+</html>
